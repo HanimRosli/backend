@@ -4,7 +4,7 @@ var todo = require('../models/todo')
 const todos = {
 
     // GET all data
-    getAllTodos: async(req, respond) => {
+    getAllTodos: async(req, res) => {
         let todos = []
         try{
             todos = await Model.Todos.findAll()
@@ -16,10 +16,10 @@ const todos = {
     },
 
     // GET one data
-    getTodo: async(req, respond) => {
-        let todos = []
+    getTodo: async(req, res) => {
+        let todo = []
         try{
-            todos = await Model.Todos.findOne()({
+            todo = await Model.Todos.findOne({
                 where: {
                     id: req.params.id
                 }
@@ -28,7 +28,7 @@ const todos = {
             console.log(e)
         }
 
-        res.json(todos)
+        res.json(todo)
     },
 
     // POST data
